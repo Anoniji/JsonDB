@@ -22,14 +22,16 @@ $Connect->Insert("users", array("test", date("dmY")));
 
 > Select : 
 
-	- One
+- One
+
 	```
 	$user = $Connect->Select("users", "pseudo", "=", "test");
 	echo $user["pseudo"]." - ";
 	echo $user["date"];
 	```
 
-	- All
+- All
+
 	```
 	print_r($Connect->Select("users", "pseudo", "=", "test", "all"));
 	```
