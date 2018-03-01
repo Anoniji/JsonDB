@@ -13,7 +13,7 @@ echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 
 # Fonctions disponibles
 
-- Connect
+## Connect
 
 > Insert
 ```
@@ -46,6 +46,17 @@ $Connect->Update("users", "pseudo", "test", array("date" => "test"));
 echo $Connect->getError();
 ```
 
-___
+## Functions
 
-- Functions
+> Password
+
+> Filter
+
+> Check
+
+> Protect
+
+> Display Error
+``` 
+echo $Connect->getError();
+```
