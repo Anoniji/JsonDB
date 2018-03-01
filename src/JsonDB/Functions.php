@@ -30,6 +30,11 @@ namespace JsonDB
 	    	// In development
 	    }
 
+	    public function Filter(array $array, $filter, $mode = "asc")
+	    {	
+	    	// In development
+	    }
+
 	    public function Date()
 	    {	
 	    	// In development
