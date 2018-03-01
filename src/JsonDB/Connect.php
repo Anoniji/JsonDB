@@ -26,6 +26,7 @@ namespace JsonDB
 		protected $dir_tb;
 		protected $_tb;
 		protected $_key;
+		protected $_str;
 
 		public function __construct($db = 'default')
 	    {
@@ -84,8 +85,15 @@ namespace JsonDB
 	    {
 			if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
+	    		$this->_str = $_tb["_str"];
+	    		unset($_tb["_str"]);
+
 	    		$_array = array();
 	    		foreach ($_tb as $k_v) {
+	    			foreach($k_v as $L_k => $L_v) {
+	    				if($this->_str[$L_k] == "int")
+	    					$k_v[$L_k] = intval($L_v);
+	    			}
 					if($k_v[$key] != $value && $o == "!=")
 	    				array_push($_array, $k_v);
 	    			else if(intval($k_v[$key]) < intval($value) && $o == "<")
@@ -99,6 +107,7 @@ namespace JsonDB
 	    			else if($k_v[$key] == $value)
 	    				array_push($_array, $k_v);
 	    		}
+
 				if($select == 'all')
 					return $_array;
 				else
