@@ -10,10 +10,11 @@ JsonDB été un projet de Base de Données en Json.
 
 # Fonctions disponibles
 
-> Insert
+> Insert : 
 $Connect->Insert("users", array("test", date("dmY")));
 
-> Select
+> Select : 
+
 	- One
 	$user = $Connect->Select("users", "pseudo", "=", "test");
 	echo $user["pseudo"]." - ";
@@ -22,8 +23,8 @@ $Connect->Insert("users", array("test", date("dmY")));
 	- All
 	print_r($Connect->Select("users", "pseudo", "=", "test", "all"));
 
-> Update
+> Update : 
 $Connect->Update("users", "pseudo", "test", array("date" => "test"));
 
-> Display Error
+> Display Error : 
 echo $Connect->getError();
