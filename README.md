@@ -15,12 +15,12 @@ echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 
 - Connect
 
-> Insert : 
+> Insert
 ```
 $Connect->Insert("users", array("test", date("dmY")));
 ```
 
-> Select : 
+> Select
 
 - One
 
@@ -36,14 +36,16 @@ $Connect->Insert("users", array("test", date("dmY")));
 	print_r($Connect->Select("users", "pseudo", "=", "test", "all"));
 	```
 
-> Update : 
+> Update
 ```
 $Connect->Update("users", "pseudo", "test", array("date" => "test"));
 ```
 
-> Display Error :
+> Display Error
 ``` 
 echo $Connect->getError();
 ```
+
+___
 
 - Functions
