@@ -65,5 +65,5 @@ $Functions->Filter($array, "date", "desc");
 
 > Display Error
 ```php
-echo $Connect->getError();
+echo $Functions->getError();
 ```
