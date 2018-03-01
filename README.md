@@ -13,6 +13,8 @@ JsonDB été un projet de Base de Données en Json.
 
 # Fonctions disponibles
 
+- Connect
+
 > Insert : 
 $Connect->Insert("users", array("test", date("dmY")));
 
@@ -31,3 +33,5 @@ $Connect->Update("users", "pseudo", "test", array("date" => "test"));
 
 > Display Error : 
 echo $Connect->getError();
+
+- Functions
