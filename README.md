@@ -8,6 +8,7 @@ JsonDB été un projet de Base de Données en Json.
 ```php
 require __DIR__ . '/vendor/autoload.php';
 $Connect = new \JsonDB\Connect($db = "site");
+$Functions = new \JsonDB\Functions();
 echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 ```
 
@@ -49,8 +50,14 @@ echo $Connect->getError();
 ## Functions
 
 > Password
+```php
+$Functions->Password("password", 030120181301);
+```
 
 > Filter
+```php
+$Functions->Filter($array, "date", "desc");
+```
 
 > Check
 
