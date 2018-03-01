@@ -2,11 +2,11 @@
 JsonDB été un projet de Base de Données en Json.
 
 # Fonctionnement
-1- Installer Composer
-2- Ajouter :
-require __DIR__ . '/vendor/autoload.php';
-$Connect = new \JsonDB\Connect($db = "site");
-echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
+- 1- Installer Composer
+- 2- Ajouter :
+>require __DIR__ . '/vendor/autoload.php';
+>$Connect = new \JsonDB\Connect($db = "site");
+>echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 
 # Fonctions disponibles
 
