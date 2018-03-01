@@ -1,0 +1,15 @@
+{
+    "name": "anoniji/JsonDB",
+    "description": "DB for WebSite",
+    "type" : "library",
+    "minimum-stability": "dev",
+    "license": "Creative Commons",
+    "authors": [
+        {
+            "name": "JsonDB"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"JsonDB": "src/"}
+    }
+}
