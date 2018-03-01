@@ -31,7 +31,8 @@ namespace JsonDB
 	    }
 
 	    public function Password($pw, int $keydate)
-	    {	
+	    {
+	    	// In development
 			$c = "0";
 			for ($i = 0, $j = strlen($pw); $i < $j; $i++) { 
 				$_a[] = ord($pw{$i});
@@ -71,54 +72,44 @@ namespace JsonDB
 			return array_merge($temp_num, $temp_str);
 	    }
 
-	    public function DateTime($timezone, $date, $return)
-	    {	
-	    	date_default_timezone_set('UTC');
-	    	return date($return, $date);
+	    public function Check($type, $value, array $options)
+	    {
 	    	// In development
+	    	if($type == "datetime") {
+	    		if(!$option[1])
+	    			$option[1] = "UTC";
+	    		date_default_timezone_set($option[1]);
+	    		return date($value, $option[0]);
+	    	}
 	    }
 
-	    public function Mail()
+	    public function Protect($v)
 	    {
 	    	// In development
-	    }	   
-
-	    public function Number()
-	    {
-	    	// In development
-	    }
-
-	    public function Check()
-	    {
-	    	// In development
-	    }
-
-	    public function Protect($value)
-	    {
-	    	if($value == "_get") {
-		    	foreach($_GET as $key => $value) {
-					$ex1 = explode("<", $value);
-					$ex2 = explode(">", $value);
-					$ex3 = explode("%", $value);
-					$ex4 = explode("?", $value);
-					$ex5 = explode("&", $value);
+	    	if($v == "_get") {
+		    	foreach($_GET as $_k => $_v) {
+					$ex1 = explode("<", $_v);
+					$ex2 = explode(">", $_v);
+					$ex3 = explode("%", $_v);
+					$ex4 = explode("?", $_v);
+					$ex5 = explode("&", $_v);
 
 					if($ex1[1] == true || $ex2[1] == true || $ex3[1] == true || $ex4[1] == true || $ex5[1] == true)
 						die();
 				}
-	    	} else if($value == "_post") {
-		    	foreach($_POST as $key => $value) {
-					$ex1 = explode("<", $value);
-					$ex2 = explode(">", $value);
-					$ex3 = explode("%", $value);
-					$ex4 = explode("?", $value);
-					$ex5 = explode("&", $value);
+	    	} else if($v == "_post") {
+		    	foreach($_POST as $_k => $_v) {
+					$ex1 = explode("<", $_v);
+					$ex2 = explode(">", $_v);
+					$ex3 = explode("%", $_v);
+					$ex4 = explode("?", $_v);
+					$ex5 = explode("&", $_v);
 
 					if($ex1[1] == true || $ex2[1] == true || $ex3[1] == true || $ex4[1] == true || $ex5[1] == true)
 						die();
 				}
 	    	} else
-		    	return strip_tags($value);
+		    	return strip_tags($v);
 	    }
 
 	    /**
