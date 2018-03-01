@@ -30,11 +30,6 @@ namespace JsonDB
 	        	$this->ky = date("dmYHis", filemtime($JsonDB));
 	    }
 
-		public function Format()
-	    {	
-	    	// In development
-	    }
-
 	    public function Password($pw, int $keydate)
 	    {	
 			$c = "0";

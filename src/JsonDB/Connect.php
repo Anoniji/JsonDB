@@ -93,6 +93,12 @@ namespace JsonDB
 	    			foreach($k_v as $L_k => $L_v) {
 	    				if($this->_str[$L_k] == "int")
 	    					$k_v[$L_k] = intval($L_v);
+	    				else if($this->_str[$L_k] == "double")
+	    					$k_v[$L_k] = doubleval($L_v);
+	    				else if($this->_str[$L_k] == "float")
+	    					$k_v[$L_k] = floatval($L_v);
+	    				else if($this->_str[$L_k] == "bool")
+	    					$k_v[$L_k] = boolval($L_v);
 	    			}
 					if($k_v[$key] != $value && $o == "!=")
 	    				array_push($_array, $k_v);
