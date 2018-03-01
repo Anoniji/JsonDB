@@ -50,15 +50,15 @@ namespace JsonDB
 
 	    public function Filter(array $array, $filter, $mode = "asc")
 	    {	
-			$tn = $ts = $temp_num = $temp_str = array();
+			$t_n = $t_s = $t_num = $t_str = array();
 			foreach ($array as $key => $row) {
 				if(is_numeric(substr($row[$filter], 0, 1))) {
-					$tn[$key] = $row[$filter];
-					$temp_num[$key] = $row;
+					$t_n[$key] = $row[$filter];
+					$t_num[$key] = $row;
 				}
 				else {
-					$ts[$key] = $row[$filter];
-					$temp_str[$key] = $row;
+					$t_s[$key] = $row[$filter];
+					$t_str[$key] = $row;
 				}
 			}
 			unset($array);
@@ -67,27 +67,25 @@ namespace JsonDB
 			else
 				$sort = SORT_ASC;
 
-			array_multisort($tn, $sort, SORT_NUMERIC, $temp_num);
-			array_multisort($ts, $sort, SORT_STRING, $temp_str);
-			return array_merge($temp_num, $temp_str);
+			array_multisort($t_n, $sort, SORT_NUMERIC, $t_num);
+			array_multisort($t_s, $sort, SORT_STRING, $t_str);
+			return array_merge($t_num, $t_str);
 	    }
 
 	    public function Check($type, $value, array $options)
 	    {
 	    	// In development
-	    	if($type == "datetime") {
-	    		if(!$option[1])
-	    			$option[1] = "UTC";
-	    		date_default_timezone_set($option[1]);
-	    		return date($value, $option[0]);
-	    	}
 	    }
 
 	    public function Protect($v)
 	    {
-	    	// In development
-	    	if($v == "_get") {
-		    	foreach($_GET as $_k => $_v) {
+	    	if($v == "_get")
+	    		$_a = $_GET;
+	    	else if($v == "_post")
+	    		$_a = $_POST;
+
+	    	if($_a) {
+		    	foreach($_a as $_k => $_v) {
 					$ex1 = explode("<", $_v);
 					$ex2 = explode(">", $_v);
 					$ex3 = explode("%", $_v);
@@ -96,18 +94,7 @@ namespace JsonDB
 
 					if($ex1[1] == true || $ex2[1] == true || $ex3[1] == true || $ex4[1] == true || $ex5[1] == true)
 						die();
-				}
-	    	} else if($v == "_post") {
-		    	foreach($_POST as $_k => $_v) {
-					$ex1 = explode("<", $_v);
-					$ex2 = explode(">", $_v);
-					$ex3 = explode("%", $_v);
-					$ex4 = explode("?", $_v);
-					$ex5 = explode("&", $_v);
-
-					if($ex1[1] == true || $ex2[1] == true || $ex3[1] == true || $ex4[1] == true || $ex5[1] == true)
-						die();
-				}
+				}	    		
 	    	} else
 		    	return strip_tags($v);
 	    }
