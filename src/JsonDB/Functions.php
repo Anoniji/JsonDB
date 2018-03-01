@@ -62,10 +62,10 @@ namespace JsonDB
 				}
 			}
 			unset($array);
+
+			$sort = SORT_ASC;
 			if($mode == "desc")
-				$sort = SORT_DESC;
-			else
-				$sort = SORT_ASC;
+				$sort = SORT_DESC;	
 
 			array_multisort($t_n, $sort, SORT_NUMERIC, $t_num);
 			array_multisort($t_s, $sort, SORT_STRING, $t_str);
@@ -79,10 +79,9 @@ namespace JsonDB
 
 	    public function Protect($v)
 	    {
+	    	$_a = $_POST;
 	    	if($v == "_get")
-	    		$_a = $_GET;
-	    	else if($v == "_post")
-	    		$_a = $_POST;
+	    		$_a = $_GET;    		
 
 	    	if($_a) {
 		    	foreach($_a as $_k => $_v) {
