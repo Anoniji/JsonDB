@@ -25,6 +25,11 @@ namespace JsonDB
 	    	// In development
 	    }
 
+	    public function Password($pw, $key)
+	    {	
+	    	// In development
+	    }
+
 	    public function Date()
 	    {	
 	    	// In development
