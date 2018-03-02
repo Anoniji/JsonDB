@@ -74,26 +74,27 @@ echo $Functions->getError();
 
 > isMail
 ```php
-if($Functions->isMail("test@me.com"))
+if($Functions->isMail("test@me.com")) {
 	echo "OK";
-else
+} else {
 	else "NO";
+}
 ```
 
 > isLink
 ```php
-if($Functions->isLink("http://test.com"))
+if($Functions->isLink("http://test.com")) {
 	echo "OK";
-else
+} else {
 	else "NO";
-
+}
 ```
 
 > isIp
 ```php
-if($Functions->isIp("127.0.0.1"))
+if($Functions->isIp("127.0.0.1")) {
 	echo "OK";
-else
+} else {
 	else "NO";
-
+}
 ```
