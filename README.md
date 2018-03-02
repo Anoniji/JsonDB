@@ -19,7 +19,7 @@ echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 
 > Insert
 ```php
-$Connect->Insert("users", array("test", date("dmY")));
+$Connect->Insert(array("test", date("dmY")));
 ```
 
 > Select
@@ -27,7 +27,7 @@ $Connect->Insert("users", array("test", date("dmY")));
 - One
 
 	```php
-	$user = $Connect->Select("users", "pseudo", "=", "test");
+	$user = $Connect->Select("pseudo", "=", "test");
 	echo $user["pseudo"]." - ";
 	echo $user["date"];
 	```
@@ -35,12 +35,12 @@ $Connect->Insert("users", array("test", date("dmY")));
 - All
 
 	```php
-	print_r($Connect->Select("users", "pseudo", "=", "test", "all"));
+	print_r($Connect->Select("pseudo", "=", "test", "all"));
 	```
 
 > Update
 ```php
-$Connect->Update("users", "pseudo", "test", array("date" => "test"));
+$Connect->Update("pseudo", "test", array("date" => "test"));
 ```
 
 > Display Error

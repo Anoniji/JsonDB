@@ -59,7 +59,7 @@ namespace JsonDB
 	    		return "JsonDB: TB LOAD";    		
 	    }
 
-	    public function Insert($tb = 'default', array $s)
+	    public function Insert(array $s)
 	    {
 	    	if(file_exists($this->dir_tb)) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
@@ -81,7 +81,7 @@ namespace JsonDB
 	    		$this->er = "tb_not_create";
 	    }	   
 
-	    public function Select($tb = 'default', $key = false, $o = '=', $value = false, $select = 'one')
+	    public function Select($key = false, $o = '=', $value = false, $select = 'one')
 	    {
 			if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
@@ -122,7 +122,7 @@ namespace JsonDB
 	    		$this->er = "tb_not_create";
 	    }
 
-	    public function Update($tb = 'default', $key = false, $value = false, array $s)
+	    public function Update($key = false, $value = false, array $s)
 	    {
 	    	if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
@@ -138,7 +138,7 @@ namespace JsonDB
 	    		$this->er = "tb_not_create";
 	    }
 
-	   	public function Delete($tb = 'default', $key = false, $value = false)
+	   	public function Delete($key = false, $value = false)
 	    {
 	    	if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
