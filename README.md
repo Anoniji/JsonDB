@@ -60,11 +60,40 @@ $Functions->Password("password", 030120181301);
 $Functions->Filter($array, "date", "desc");
 ```
 
-> Check
-
 > Protect
+```php
+echo $Functions->Protect("<?= $test; ?>");
+```
 
 > Display Error
 ```php
 echo $Functions->getError();
+```
+
+### Check
+
+> isMail
+```php
+if($Functions->isMail("test@me.com"))
+	echo "OK";
+else
+	else "NO";
+```
+
+> isLink
+```php
+if($Functions->isLink("http://test.com"))
+	echo "OK";
+else
+	else "NO";
+
+```
+
+> isIp
+```php
+if($Functions->isIp("127.0.0.1"))
+	echo "OK";
+else
+	else "NO";
+
 ```
