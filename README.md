@@ -43,6 +43,11 @@ $Connect->Insert(array("test", date("dmY")));
 $Connect->Update("pseudo", "test", array("date" => "test"));
 ```
 
+> Delete
+```php
+$Connect->Delete("pseudo", "=", "test");
+```
+
 > Display Error
 ```php
 echo $Connect->getError();

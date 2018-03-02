@@ -157,21 +157,31 @@ namespace JsonDB
 	    		$this->er = "tb_not_create";
 	    }
 
-	   	public function Delete($key = false, $value = false)
+	   	public function Delete($key = false, $o = "=", $value = false)
 	    {
 	    	if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
 	    		foreach ($_tb as $k_v) {
-	    			if($k_v[$key] == $value) {
-			    		try {
-			    			unset($k_v);
-			    			file_put_contents($this->dir_tb, json_encode($_tb, JSON_PRETTY_PRINT), LOCK_EX);
-			    			return "JsonDB: Delete"; 
-			    		}
-			    		catch(Exception $e) {
-			    			$this->er = "tb_error_delete: " . $e->getMessage();
-			    		}
-	    			}
+			    	try {
+						if($k_v[$key] != $value && $o == "!=")
+		    				unset($k_v);
+		    			else if(intval($k_v[$key]) < intval($value) && $o == "<")
+		    				unset($k_v);
+		    			else if(intval($k_v[$key]) <= intval($value) && $o == "<=")
+		    				unset($k_v);
+		    			else if(intval($k_v[$key]) >= intval($value) && $o == ">=")
+		    				unset($k_v);
+		    			else if(intval($k_v[$key]) > intval($value) && $o == ">")
+		    				unset($k_v);
+		    			else if($k_v[$key] == $value)
+		    				unset($k_v);
+
+		    			file_put_contents($this->dir_tb, json_encode($_tb, JSON_PRETTY_PRINT), LOCK_EX);
+			    		return "JsonDB: Delete"; 
+		    		}
+		    		catch(Exception $e) {
+		    			$this->er = "tb_error_delete: " . $e->getMessage();
+		    		}
 	    		}
 	    	} else
 	    		$this->er = "tb_not_create";
