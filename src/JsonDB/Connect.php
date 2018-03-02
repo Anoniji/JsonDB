@@ -126,14 +126,33 @@ namespace JsonDB
 	    {
 	    	if(file_exists($this->dir_tb) && $key && $value) {
 	    		$_tb = json_decode(file_get_contents($this->dir_tb), true);
+	    		$this->_str = $_tb["_str"];
 	    		$_key = array_search($value, array_column($_tb, $key)) - 1;
-	    		foreach ($s as $key => $value) {
-	    			$_tb[$_key][$key] = $value;
+
+	    		if($_key < 0) {
+	    			if((count($s) + 1) === count($this->_str)) {
+	    				$_a = array();
+		    			foreach ($this->_str as $k => $v) {
+		    				if(isset($s[$k]))
+			    				$this->_str[$k] = $s[$k];
+			    		}
+			    		$this->_str[$key] = $value;
+			    		foreach ($this->_str as $v) {
+		    				array_push($_a, $v);
+			    		}
+		    			$this->Insert($_a);
+		    			return "JsonDB: Create by Update"; 
+	    			} else
+		    			$this->er = "tb_error_create_by_update";
+	    		} else {
+	    			foreach ($s as $key => $value) {
+		    			$_tb[$_key][$key] = $value;
+		    		}
+		    		if(!file_put_contents($this->dir_tb, json_encode($_tb, JSON_PRETTY_PRINT), LOCK_EX))
+		    			$this->er = "tb_error_update";
+		    		else
+		    			return "JsonDB: Update Data [".$_key."]"; 
 	    		}
-	    		if(!file_put_contents($this->dir_tb, json_encode($_tb, JSON_PRETTY_PRINT), LOCK_EX))
-	    			$this->er = "tb_error_update";
-	    		else
-	    			return "JsonDB: Update Data [".$_key."]"; 
 	    	} else
 	    		$this->er = "tb_not_create";
 	    }
