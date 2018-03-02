@@ -24,7 +24,7 @@ $Connect->Insert(array("test", date("dmY")));
 
 > Select
 
-- One
+#### One
 
 	```php
 	$user = $Connect->Select("pseudo", "=", "test");
@@ -32,7 +32,7 @@ $Connect->Insert(array("test", date("dmY")));
 	echo $user["date"];
 	```
 
-- All
+#### All
 
 	```php
 	print_r($Connect->Select("pseudo", "=", "test", "all"));
@@ -74,27 +74,26 @@ echo $Functions->getError();
 
 > isMail
 ```php
-if($Functions->isMail("test@me.com")) {
-	echo "OK";
-} else {
-	else "NO";
-}
+if($Functions->isMail("test@me.com"))
+  echo "OK";
+else
+  else "NO";
 ```
 
 > isLink
 ```php
-if($Functions->isLink("http://test.com")) {
-	echo "OK";
-} else {
-	else "NO";
-}
+if($Functions->isLink("http://test.com"))
+  echo "OK";
+else
+  else "NO";
+
 ```
 
 > isIp
 ```php
-if($Functions->isIp("127.0.0.1")) {
-	echo "OK";
-} else {
-	else "NO";
-}
+if($Functions->isIp("127.0.0.1"))
+  echo "OK";
+else
+  else "NO";
+
 ```
