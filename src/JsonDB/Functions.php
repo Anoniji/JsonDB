@@ -72,10 +72,29 @@ namespace JsonDB
 			return array_merge($t_num, $t_str);
 	    }
 
-	    public function Check($type, $value, array $options)
-	    {
-	    	// In development
-	    }
+	    public function isMail($val) 
+    	{
+    		if(filter_var($val, FILTER_VALIDATE_EMAIL))
+				return true;
+    		else
+    			return false;
+    	}
+
+	    public function isLink($val) 
+    	{
+    		if(filter_var($val, FILTER_VALIDATE_URL))
+				return true;
+    		else
+    			return false;
+    	}
+
+    	public function isIp($val) 
+    	{
+    		if(filter_var($val, FILTER_VALIDATE_IP))
+				return true;
+    		else
+    			return false;
+    	}
 
 	    public function Protect($v)
 	    {
