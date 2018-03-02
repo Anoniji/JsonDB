@@ -57,8 +57,13 @@ echo $Connect->getError();
 
 > Password
 ```php
-$Functions->Password("password", 030120181301);
+$Functions->Password("password", 030120181301, "md5");
 ```
+or
+```php
+$Functions->Password("password", 030120181301, "crypt");
+```
+
 
 > Filter
 ```php

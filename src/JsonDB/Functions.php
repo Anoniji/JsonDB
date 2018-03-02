@@ -30,9 +30,8 @@ namespace JsonDB
 	        	$this->ky = date("dmYHis", filemtime($JsonDB));
 	    }
 
-	    public function Password($pw, int $keydate)
+	    public function Password($pw, int $keydate, $return = "md5")
 	    {
-	    	// In development
 			$c = "0";
 			for ($i = 0, $j = strlen($pw); $i < $j; $i++) { 
 				$_a[] = ord($pw{$i});
@@ -44,8 +43,11 @@ namespace JsonDB
 				$m = str_replace($m_i, $m_o,  $so);
 				$m .= $m;
 				$c = $c + $this->ky;
-			} 
-			return md5($m);
+			}
+			if($return == "md5")
+				return md5($m);
+			else
+				return crypt(md5($m), '$6$rounds='.$c.'$usesomesillystringforsalt$'); 
 	    }
 
 	    public function Filter(array $array, $filter, $mode = "asc")
