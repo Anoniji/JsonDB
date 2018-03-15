@@ -27,17 +27,17 @@ $Connect->Insert(array("test", date("dmY")));
 
 #### One
 
-	```php
-	$user = $Connect->Select("pseudo", "=", "test");
-	echo $user["pseudo"]." - ";
-	echo $user["date"];
-	```
+```php
+$user = $Connect->Select("pseudo", "=", "test");
+echo $user["pseudo"]." - ";
+echo $user["date"];
+```
 
 #### All
 
-	```php
-	print_r($Connect->Select("pseudo", "=", "test", "all"));
-	```
+```php
+print_r($Connect->Select("pseudo", "=", "test", "all"));
+```
 
 > Update
 ```php
