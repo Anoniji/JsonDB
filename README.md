@@ -54,6 +54,17 @@ $Connect->Delete("pseudo", "=", "test");
 echo $Connect->getError();
 ```
 
+## Update
+
+> Start
+```php
+if($Update->Start())
+  echo "OK";
+else
+  else "NO";
+
+```
+
 ## Functions
 
 > Password
@@ -103,16 +114,6 @@ else
 > isIp
 ```php
 if($Functions->isIp("127.0.0.1"))
-  echo "OK";
-else
-  else "NO";
-
-```
-
-## Update
-> isIp
-```php
-if($Update->Start())
   echo "OK";
 else
   else "NO";
