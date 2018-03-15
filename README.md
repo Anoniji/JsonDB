@@ -10,6 +10,7 @@ JsonDB été un projet de Base de Données en Json.
 require __DIR__ . '/vendor/autoload.php';
 $Connect = new \JsonDB\Connect($db = "site");
 $Functions = new \JsonDB\Functions();
+$Update = new \JsonDB\Update();
 echo $Connect->Jtb("test", array("pseudo" => "string", "date" => "int"));
 ```
 
@@ -102,6 +103,16 @@ else
 > isIp
 ```php
 if($Functions->isIp("127.0.0.1"))
+  echo "OK";
+else
+  else "NO";
+
+```
+
+## Update
+> isIp
+```php
+if($Update->Start())
   echo "OK";
 else
   else "NO";
