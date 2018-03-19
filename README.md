@@ -29,6 +29,11 @@ $Connect->Insert(array("test", date("dmY")));
 
 ```php
 $user = $Connect->Select("pseudo", "=", "test");
+
+// or Query
+
+$user = $Connect->Query("Select one in TB Where pseudo = test");
+
 echo $user["pseudo"]." - ";
 echo $user["date"];
 ```
@@ -37,6 +42,10 @@ echo $user["date"];
 
 ```php
 print_r($Connect->Select("pseudo", "=", "test", "all"));
+
+// or Query
+
+print_r($Connect->Query("Select all in TB Where pseudo = test"));
 ```
 
 > Update
@@ -47,6 +56,10 @@ $Connect->Update("pseudo", "test", array("date" => "test"));
 > Delete
 ```php
 $Connect->Delete("pseudo", "=", "test");
+
+// or Query
+
+$Connect->Query("Delete in TB Where pseudo = test");
 ```
 
 > Display Error

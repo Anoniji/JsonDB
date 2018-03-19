@@ -199,6 +199,31 @@ namespace JsonDB
 	    		$this->er = "tb_not_create";
 	    }
 
+	    public function Query($query = false)
+	    {
+	    	if($query) {
+	    		$type 	= explode(" ", $query)[0];
+	    		$mode 	= explode(" ", $query)[1];
+	    		$split 	= explode(" ", explode("Where ", $query)[1]);
+	    		if($split[1] == "true") $split[1] = true;
+	    		if($split[2] == "true") $split[2] = true;
+
+	    		if($type == "Insert") {
+	    			return "coming soon";
+
+	    		} else if($type == "Select") {
+	    			return $this->Select($split[0], $split[1], $split[2], $mode);
+	    			
+	    		} else if($type == "Update") {
+	    			return "coming soon";
+	    			
+	    		} else if($type == "Delete")
+	    			return $this->Delete($split[0], $split[1], $split[2]);
+
+	    	} else
+	    		$this->er = "query_error";
+	    }
+
 	    /**
 	     * @return Error
 	     */
