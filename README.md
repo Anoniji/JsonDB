@@ -1,5 +1,4 @@
 # JsonDB - Open Project
-![alt text](https://anoniji.com/img/JsonDB.png)
 JsonDB été un projet de Base de Données en Json.
 
 # Fonctionnement
