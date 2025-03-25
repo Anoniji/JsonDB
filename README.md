@@ -73,7 +73,7 @@ echo $Connect->getError();
 if($Update->Start())
   echo "OK";
 else
-  else "NO";
+  echo "NO";
 
 ```
 
@@ -111,7 +111,7 @@ echo $Functions->getError();
 if($Functions->isMail("test@me.com"))
   echo "OK";
 else
-  else "NO";
+  echo "NO";
 ```
 
 > isLink
@@ -119,7 +119,7 @@ else
 if($Functions->isLink("http://test.com"))
   echo "OK";
 else
-  else "NO";
+  echo "NO";
 
 ```
 
@@ -128,6 +128,6 @@ else
 if($Functions->isIp("127.0.0.1"))
   echo "OK";
 else
-  else "NO";
+  echo "NO";
 
 ```
